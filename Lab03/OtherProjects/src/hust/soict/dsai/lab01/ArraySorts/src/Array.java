@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Arrays;
 public class Array {
 	
 	public static int[] sort (int[] arr) {
