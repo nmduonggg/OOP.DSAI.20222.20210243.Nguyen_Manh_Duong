@@ -1,4 +1,4 @@
-
+package hust.soict.dsai.aims.disc;
 public class DigitalVideoDisc {
 	private String title;
 	private String category;
@@ -62,4 +62,14 @@ public class DigitalVideoDisc {
         nbDigitalVideoDiscs++;
         id = nbDigitalVideoDiscs;
 	}
+
+    public boolean equal(DigitalVideoDisc disc) {
+        if ((category == disc.getCategory())
+        && (director == disc.getDirector()) && (length == disc.getLength())
+        && (title == disc.getTitle())) {
+            return true;
+         } else {
+        return false;
+        }
+    }
 }

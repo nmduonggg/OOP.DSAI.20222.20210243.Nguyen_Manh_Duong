@@ -1,14 +1,13 @@
+package hust.soict.dsai.aims.cart;
 import java.util.Arrays;
 
-import javax.lang.model.type.NullType;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private DigitalVideoDisc itemsOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
 
 	private int qtyOrdered;
-	private float cost;
 
 	public boolean addDigitalVideoDisc(DigitalVideoDisc disc) {
 		for (int i = 0; i < MAX_NUMBERS_ORDERED; i++) {
@@ -24,8 +23,8 @@ public class Cart {
 		for (int i = 0; i < MAX_NUMBERS_ORDERED; i++) {
 			DigitalVideoDisc curr_disc = itemsOrdered[i];
 			if (curr_disc != null) {
-				if ((curr_disc.getCategory() == disc.getCategory()) && (curr_disc.getClass() == disc.getClass())
-					&& (curr_disc.getDirector() == disc.getDirector()) && (curr_disc.getLength() == curr_disc.getLength())
+				if ((curr_disc.getCategory() == disc.getCategory())
+					&& (curr_disc.getDirector() == disc.getDirector()) && (curr_disc.getLength() == disc.getLength())
 					&& (curr_disc.getTitle() == disc.getTitle())) {
 						itemsOrdered[i] = null;
 						qtyOrdered = qtyOrdered - 1;
