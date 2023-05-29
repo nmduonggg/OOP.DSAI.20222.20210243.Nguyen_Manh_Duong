@@ -25,6 +25,5 @@ public class Aims {
 		System.out.println("Total cost after removing dvd3: ");
 		System.out.println(anOrder.totalCost());
 
-		System.out.println(DigitalVideoDisc.nbDigitalVideoDiscs);
 	}
 }

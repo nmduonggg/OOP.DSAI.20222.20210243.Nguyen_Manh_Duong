@@ -1,4 +1,7 @@
+import java.util.Arrays;
+
 import javax.lang.model.type.NullType;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
@@ -88,4 +91,58 @@ public class Cart {
 			return false;
 		}
 	}
+
+	public String toString(DigitalVideoDisc dvd) {
+		String strId = Integer.toString(dvd.id);
+		String strCost = Float.toString(dvd.getCost());
+		return strId + ". DVD - " + dvd.getTitle() + " - " + dvd.getCategory() + " - " + dvd.getDirector() + " - " + dvd.getLength() + ": " + strCost + "$";  
+	}
+
+	public String searchID(int id){
+		boolean found = false;
+		for (int i = 0; i < MAX_NUMBERS_ORDERED; i++){
+			DigitalVideoDisc curr_disc = itemsOrdered[i];
+			if (curr_disc != null) {
+				if (curr_disc.id == id) {
+					found = true;
+					return toString(curr_disc);
+					
+				}
+			}
+		} return "No match found";
+	}
+
+	public void searchTitle(String title) {
+		for (int i = 0; i < MAX_NUMBERS_ORDERED; i++){
+			DigitalVideoDisc curr_disc = itemsOrdered[i];
+			if (curr_disc != null) {
+				if (curr_disc.getTitle() == title){
+					System.out.println(toString(curr_disc));
+				}
+			}
+		}
+	}
+
+	public void print() {
+		System.out.println("*".repeat(15) + "CART" + "*".repeat(15));
+
+		int[] ids = new int[MAX_NUMBERS_ORDERED];
+		for (int i = 0; i < MAX_NUMBERS_ORDERED; i++){
+			DigitalVideoDisc curr_disc = itemsOrdered[i];
+			if (curr_disc != null) {
+				ids[i] = curr_disc.id;
+			}
+		}
+		Arrays.sort(ids);
+
+		for (int i = 0; i < MAX_NUMBERS_ORDERED; i++) {
+			int id = ids[i];
+			if (id > 0) {
+				System.out.println(searchID(id));
+			}
+		}
+		System.out.println("*".repeat(34));
+	}
+
+
 }
