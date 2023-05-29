@@ -24,5 +24,7 @@ public class Aims {
 		// anOrder.removeDigitalVideoDisc(dvd2);
 		System.out.println("Total cost after removing dvd3: ");
 		System.out.println(anOrder.totalCost());
+
+		System.out.println(DigitalVideoDisc.nbDigitalVideoDiscs);
 	}
 }
