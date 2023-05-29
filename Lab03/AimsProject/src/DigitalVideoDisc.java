@@ -62,4 +62,14 @@ public class DigitalVideoDisc {
         nbDigitalVideoDiscs++;
         id = nbDigitalVideoDiscs;
 	}
+
+    public boolean equal(DigitalVideoDisc disc) {
+        if ((category == disc.getCategory())
+        && (director == disc.getDirector()) && (length == disc.getLength())
+        && (title == disc.getTitle())) {
+            return true;
+         } else {
+        return false;
+        }
+    }
 }

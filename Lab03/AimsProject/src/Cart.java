@@ -24,8 +24,8 @@ public class Cart {
 		for (int i = 0; i < MAX_NUMBERS_ORDERED; i++) {
 			DigitalVideoDisc curr_disc = itemsOrdered[i];
 			if (curr_disc != null) {
-				if ((curr_disc.getCategory() == disc.getCategory()) && (curr_disc.getClass() == disc.getClass())
-					&& (curr_disc.getDirector() == disc.getDirector()) && (curr_disc.getLength() == curr_disc.getLength())
+				if ((curr_disc.getCategory() == disc.getCategory())
+					&& (curr_disc.getDirector() == disc.getDirector()) && (curr_disc.getLength() == disc.getLength())
 					&& (curr_disc.getTitle() == disc.getTitle())) {
 						itemsOrdered[i] = null;
 						qtyOrdered = qtyOrdered - 1;
