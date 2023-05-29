@@ -13,7 +13,7 @@ public class CartTest {
 
         cart.print();
 
-        System.out.println(cart.searchID(2));
+        System.out.println(cart.searchID(1));
         cart.searchTitle("Aladin");
     }
 }
