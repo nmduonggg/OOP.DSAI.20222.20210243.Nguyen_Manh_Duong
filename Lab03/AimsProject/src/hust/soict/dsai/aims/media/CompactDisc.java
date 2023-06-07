@@ -3,7 +3,7 @@ import java.util.*;
 
 import java.util.ArrayList;
 
-public class CompactDisc extends Disc {
+public class CompactDisc extends Disc implements Playable {
     private String artist;
     private List<Track> tracks = new ArrayList<Track>();
     public String getArtist() {
@@ -32,22 +32,11 @@ public class CompactDisc extends Disc {
             total_length = total_length + track.getLength();
         } return total_length;
     }
-}
 
-
-
-class Track {
-    private String title;
-    private int length;
-    public String getTitle() {
-        return title;
+    public void play () {
+        System.out.println("Compact DVD by " + this.getArtist());
+        for (Track track: tracks) {
+            track.play();
+        }
     }
-    public int getLength() {
-        return length;
-    }
-    public Track (String title, int length){
-        this.title = title;
-        this.length = length;
-    }
-    
 }
