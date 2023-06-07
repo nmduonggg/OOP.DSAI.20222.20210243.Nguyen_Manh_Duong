@@ -10,19 +10,19 @@ public class CompactDisc extends Disc implements Playable {
         return artist;
     }
 
-    public void addTrack (Track track) {
+    public boolean addTrack (Track track) {
         if (!(tracks.contains(track))){
             tracks.add(track);
-            System.out.println("Add successfully !");
-        } else {System.out.println("Track is added before");}
+            return true;
+        } else {return false;}
     }
 
-    public void removeTrack(Track track) {
+    public boolean removeTrack(Track track) {
         if (tracks.contains(track)) {
             tracks.remove(track);
-            System.out.println("Remove successfully");
+            return true;
         } else {
-            System.out.println("No matching found");
+           return false;
         }
     }
 
@@ -38,8 +38,5 @@ public class CompactDisc extends Disc implements Playable {
         for (Track track: tracks) {
             track.play();
         }
-    }
-    public boolean equals(CompactDisc cp) {
-        return (artist == cp.getArtist());
     }
 }

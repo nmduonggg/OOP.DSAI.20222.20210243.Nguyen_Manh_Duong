@@ -19,8 +19,14 @@ public class Track implements Playable {
         System.out.println("DVD Length: " + this.getLength());
     }
 
-    public boolean equals (Track t) {
-        return ((title == t.getTitle()) && (length == t.getLength()));
+    public boolean equals (Object o) {
+        if (o instanceof Track) {
+            Track t = (Track) o;
+            return ((title == t.getTitle()) && (length == t.getLength()));
+        } else {
+            return false;
+        }
+        
     }
     
 }
