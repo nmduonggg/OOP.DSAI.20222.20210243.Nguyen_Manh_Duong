@@ -13,5 +13,14 @@ public class Track implements Playable {
         this.title = title;
         this.length = length;
     }
+
+    public void play () {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD Length: " + this.getLength());
+    }
+
+    public boolean equals (Track t) {
+        return ((title == t.getTitle()) && (length == t.getLength()));
+    }
     
 }

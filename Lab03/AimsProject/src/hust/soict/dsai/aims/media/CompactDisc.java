@@ -39,4 +39,7 @@ public class CompactDisc extends Disc implements Playable {
             track.play();
         }
     }
+    public boolean equals(CompactDisc cp) {
+        return (artist == cp.getArtist());
+    }
 }

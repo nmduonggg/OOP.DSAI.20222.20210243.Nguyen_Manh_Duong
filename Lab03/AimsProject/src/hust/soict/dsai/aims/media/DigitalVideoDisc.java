@@ -1,11 +1,10 @@
 package hust.soict.dsai.aims.media;
 public class DigitalVideoDisc extends Disc implements Playable {
-	private String director;
-	private int length;
+
     private static int nbDigitalVideoDiscs = 0;
 	
-	public String getDirector() {
-		return director;
+	public String getAuthor() {
+		return author;
 	}
 	public int getLength() {
 		return length;
@@ -26,34 +25,30 @@ public class DigitalVideoDisc extends Disc implements Playable {
         nbDigitalVideoDiscs++;
         id = nbDigitalVideoDiscs;
 	}
-	public DigitalVideoDisc(String title, String category, String director, float cost) {
+	public DigitalVideoDisc(String title, String category, String author, float cost) {
 		super();
 		this.title = title;
 		this.category = category;
-		this.director = director;
+		this.author = author;
 		this.cost = cost;
         nbDigitalVideoDiscs++;
         id = nbDigitalVideoDiscs;
 	}
-	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+	public DigitalVideoDisc(String title, String category, String author, int length, float cost) {
 		super();
 		this.title = title;
 		this.category = category;
-		this.director = director;
+		this.author = author;
 		this.length = length;
 		this.cost = cost;
         nbDigitalVideoDiscs++;
         id = nbDigitalVideoDiscs;
 	}
 
-    public boolean equal(DigitalVideoDisc disc) {
-        if ((category == disc.getCategory())
-        && (director == disc.getDirector()) && (length == disc.getLength())
-        && (title == disc.getTitle())) {
-            return true;
-         } else {
-        return false;
-        }
+    public boolean equals(DigitalVideoDisc disc) {
+        return ((category == disc.getCategory())
+        && (author == disc.getAuthor()) && (length == disc.getLength())
+        && (title == disc.getTitle()));
     }
 
 	public void play () {
