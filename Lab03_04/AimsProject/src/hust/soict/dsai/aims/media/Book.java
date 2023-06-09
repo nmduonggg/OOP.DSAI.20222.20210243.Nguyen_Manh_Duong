@@ -4,9 +4,15 @@ import java.util.*;
 public class Book extends Media {
     private List<String> authors = new ArrayList<String>();
 
-    public Book() {
-        super();
+    public Book(int id, String title) {
+        super(id, title);
     }
+
+    public Book (String title) {
+        super();
+        this.title = title;
+    }
+    
     public boolean addAuthor(String authorName) {
         if (!(authors.contains(authorName))) {
             authors.add(authorName);
@@ -14,6 +20,10 @@ public class Book extends Media {
         } else {
             return false;
         }
+    }
+
+    public String toString() {
+        return "Book " + super.toString();
     }
 
     public boolean removeAuthod(String authorName) {

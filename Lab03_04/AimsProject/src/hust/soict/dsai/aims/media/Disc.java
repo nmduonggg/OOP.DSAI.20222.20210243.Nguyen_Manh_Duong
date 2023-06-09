@@ -1,6 +1,6 @@
 package hust.soict.dsai.aims.media;
 
-public class Disc extends Media {
+public class Disc extends Media implements Playable {
     protected int length;
     protected String author;
     public int getLength() {
@@ -10,8 +10,15 @@ public class Disc extends Media {
         return author;
     }
 
-    public Disc () {
+    public void play(){}
+
+    public Disc (int id, String title) {
+        super(id, title);
+    }
+
+    public Disc(String title) {
         super();
+        this.title = title;
     }
 
     
