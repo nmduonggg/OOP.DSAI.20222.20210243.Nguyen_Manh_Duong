@@ -23,7 +23,24 @@ public class Store {
         }
     }
 
+    public int searchMedia(String title) {
+        for (Media m: itemsInStore) {
+            if (m.getTitle().equals(title)){
+                return m.getId();
+            }
+        } return -1;
+    }
+
+    public Media detailsId(int id){
+        for (Media m: itemsInStore) {
+            if (m.getId() == id) {
+                return m;
+            }
+        } return null;
+    }
+
     public Store(){
         super();
     }
+
 }
