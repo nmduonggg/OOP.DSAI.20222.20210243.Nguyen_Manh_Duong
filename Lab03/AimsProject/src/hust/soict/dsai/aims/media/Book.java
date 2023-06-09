@@ -5,7 +5,7 @@ public class Book extends Media {
     private List<String> authors = new ArrayList<String>();
 
     public Book() {
-
+        super();
     }
     public boolean addAuthor(String authorName) {
         if (!(authors.contains(authorName))) {

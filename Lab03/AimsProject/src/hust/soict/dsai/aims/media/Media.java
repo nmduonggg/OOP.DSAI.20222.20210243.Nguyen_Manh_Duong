@@ -1,5 +1,4 @@
 package hust.soict.dsai.aims.media;
-import java.util.*;
 
 public abstract class Media {
     protected int id;
