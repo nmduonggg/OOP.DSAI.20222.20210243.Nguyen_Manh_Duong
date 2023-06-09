@@ -5,6 +5,7 @@ public abstract class Media {
     protected String title;
     protected String category;
     protected float cost;
+
     public int getId() {
         return id;
     }
@@ -16,6 +17,15 @@ public abstract class Media {
     }
     public float getCost() {
         return cost;
+    }
+
+    public boolean equals(Object o) {
+        if (o instanceof Media) {
+            Media m = (Media) o;
+            return this.getTitle() == m.getTitle();
+        } else {
+            return false;
+        }
     }
     
 }
