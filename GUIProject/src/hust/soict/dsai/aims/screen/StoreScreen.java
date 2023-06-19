@@ -13,7 +13,7 @@ import hust.soict.dsai.aims.media.Playable;
 
 public class StoreScreen extends JFrame {
     private Store store;
-    private Cart cart = new Cart();
+    private Cart cart;
     
     // ***NORTH COMPONENT*** //
     JPanel createNorth() {
@@ -51,6 +51,7 @@ public class StoreScreen extends JFrame {
         title.setForeground(Color.CYAN);
 
         JButton cart = new JButton("View cart");
+        cart.addMouseListener(new ViewCartMouseListener());
         cart.setPreferredSize(new Dimension(100, 50));
         cart.setMaximumSize(new Dimension(100, 50));
 
@@ -70,8 +71,10 @@ public class StoreScreen extends JFrame {
         center.setLayout(new GridLayout(3,3,2,2));
         ArrayList<Media> mediaInStore = store.getItemsInStore();
         for (int i = 0; i < 9; i++){
+
             MediaStore cell = new MediaStore(mediaInStore.get(i), cart);
             center.add(cell);
+                
         }
 
         return center;
@@ -79,8 +82,9 @@ public class StoreScreen extends JFrame {
     }
 
     // putting all together
-    public StoreScreen(Store store) {
+    public StoreScreen(Store store, Cart cart) {
         this.store = store;
+        this.cart = cart;
         Container cp = getContentPane();
         cp.setLayout(new BorderLayout());
 
@@ -91,15 +95,30 @@ public class StoreScreen extends JFrame {
         setTitle("Store");
         setSize(1024, 768);
     }
+    private class ViewCartMouseListener implements MouseListener {
+        public void mousePressed(MouseEvent e) {}
+        public void mouseReleased(MouseEvent e) {}
+        public void mouseEntered(MouseEvent e) {}
+        public void mouseExited(MouseEvent e) {}
 
-    public static void main(String[] args) {
-        Store store = new Store();
-        
-        for (int i = 1; i<=9; i++) {
-            store.addMedia(new DigitalVideoDisc(i, "DVD"+i));
+        public void mouseClicked(MouseEvent e) {
+            new CartScreen(cart, store);
+            setVisible(false);
         }
+    }
 
-        new StoreScreen(store);
+
+    public static void main (String[] args){
+        Cart cart = new Cart();
+        Store store = new Store();
+        for (int i = 1; i<=9; i++) {
+            store.addMedia(new DigitalVideoDisc(i, "DVD"+i, "A", 10, "nmd", (float)10.0));
+        }
+        new StoreScreen(store, cart);
     }
 }
+
+
+
+
 

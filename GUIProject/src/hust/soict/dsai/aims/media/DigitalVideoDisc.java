@@ -17,6 +17,10 @@ public class DigitalVideoDisc extends Disc {
 		super(title);
 	}
 
+    public DigitalVideoDisc(int id, String title, String category, int length, String author, float cost) {
+        super(id, title, category, length, author, cost);
+}	
+
 	public String play () {
 		return "Playing DVD: " + this.getTitle() + "\n DVD Length: " + this.getLength();
 		

@@ -27,13 +27,13 @@
                   <items>
                         <Menu mnemonicParsing="false" text="Update Store">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Add Book" />
-                              <MenuItem mnemonicParsing="false" text="Add CD" />
-                              <MenuItem mnemonicParsing="false" text="Add DVD" />
+                            <MenuItem mnemonicParsing="false" onAction="#menuItemAddBookPressed" text="Add Book" />
+                              <MenuItem mnemonicParsing="false" onAction="#menuItemAddCDPressed" text="Add CD" />
+                              <MenuItem mnemonicParsing="false" onAction="#menuItemAddDVDPressed" text="Add DVD" />
                           </items>
                         </Menu>
-                        <MenuItem mnemonicParsing="false" text="View Store" />
-                        <MenuItem mnemonicParsing="false" text="View Cart" />
+                        <MenuItem mnemonicParsing="false" onAction="#menuItemViewStorePressed" text="View Store" />
+                        <MenuItem mnemonicParsing="false" onAction="#menuItemViewCartPressed" text="View Cart" />
                   </items>
                 </Menu>
               </menus>
@@ -97,14 +97,15 @@
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label text="Total" textFill="AQUA">
+                  <Label text="Total: " textFill="AQUA">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
+                  <TextField fx:id="tfTotalCost" alignment="CENTER" editable="false" style="-fx-background-color: white;" />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" style="-fx-background-color: red;" text="Place Order" textFill="WHITE">
+            <Button fx:id="btnPlaceOrder" mnemonicParsing="false" onAction="#btnPlaceOrderPressed" style="-fx-background-color: red;" text="Place Order" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

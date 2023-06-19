@@ -23,5 +23,12 @@ public class Disc extends Media implements Playable {
         this.title = title;
     }
 
+    public Disc(int id, String title, String category, int length, String author, float cost) {
+        super(id, title, category, cost);
+        this.length = length;
+        this.author = author;
+}
+
+
     
 }

@@ -1,7 +1,9 @@
 package hust.soict.dsai.aims.screen;
+
 import java.io.IOException;
 import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.*;
+import hust.soict.dsai.aims.store.Store;
 import javafx.embed.swing.JFXPanel;
 import javafx.application.Platform;
 import javafx.scene.Parent;
@@ -13,8 +15,9 @@ import javafx.fxml.FXMLLoader;
 
 public class CartScreen extends JFrame {
     private Cart cart;
+    private Store store;
 
-    public CartScreen(Cart cart) {
+    public CartScreen(Cart cart, Store store) {
         super();
         this.cart = cart;
 
@@ -28,7 +31,7 @@ public class CartScreen extends JFrame {
             public void run() {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/hust/soict/dsai/aims/screen/fxml/cart.fxml"));
-                    CartScreenController controller = new CartScreenController(cart);
+                    CartScreenController controller = new CartScreenController(cart, store);
                     loader.setController(controller);
                     Parent root = (Parent) loader.load();
                     fxPanel.setScene(new Scene(root));
@@ -37,14 +40,19 @@ public class CartScreen extends JFrame {
                 }
             }
         });
+
+        this.setSize(1024, 768);
     }
 
-    public static void main (String[] args){
-        Cart cart = new Cart();
-        for (int i = 1; i<=9; i++) {
-            cart.addMedia(new DigitalVideoDisc(i, "DVD"+i));
-        }
+    // public static void main (String[] args){
+    //     Cart cart = new Cart();
+    //     Store store = new Store();
+    //     for (int i = 1; i<=9; i++) {
+    //         cart.addMedia(new DigitalVideoDisc(i, "DVD"+i, "A", 10, "nmd", (float)10.0));
+    //         store.addMedia(new DigitalVideoDisc(i, "DVD"+i, "B", 10, "nm", (float)10.0));
+    //     }
+        
 
-        new CartScreen(cart);
-    }
+    //     new CartScreen(cart, store);
+    // }
 }

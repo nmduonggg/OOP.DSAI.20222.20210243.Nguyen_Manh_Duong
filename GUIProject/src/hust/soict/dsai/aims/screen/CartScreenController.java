@@ -1,30 +1,30 @@
 package hust.soict.dsai.aims.screen;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import hust.soict.dsai.aims.media.Media;
 import javafx.scene.control.RadioButton;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-
 import javafx.event.ActionEvent;
-
+import java.awt.MenuItem;
 import java.awt.event.MouseEvent;
 
+import javax.swing.Action;
+
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.media.Playable;
-import hust.soict.dsai.aims.screen.event_handle.PlayMedia;
+import hust.soict.dsai.aims.screen.event_handle.*;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.value.*;
 import javafx.collections.transformation.FilteredList;
 
 
 
 public class CartScreenController {
     private Cart cart;
+    private Store store;
 
     @FXML private TableView<Media> tblMedia;
     @FXML private TableColumn<Media, String> colMediaTitle;
@@ -35,13 +35,19 @@ public class CartScreenController {
     @FXML private TextField tfFilter;
     @FXML private RadioButton radioBtnFilterID;
     @FXML private RadioButton radioBtnFilterTitle;
+    @FXML private TextField tfTotalCost;
+    @FXML private Button btnPlaceOrder;
+    
+    private float totalCost;
 
-    public CartScreenController(Cart cart) {
+    public CartScreenController(Cart cart, Store store) {
         super();
         this.cart = cart;
+        this.store = store;
+        totalCost = this.cart.totalCost();
     }
 
-    @FXML
+    @FXML   // set the display
     private void initialize() {
         colMediaTitle.setCellValueFactory(new PropertyValueFactory<Media, String>("title"));
         colMediaCategory.setCellValueFactory(new PropertyValueFactory<Media, String>("category"));
@@ -49,6 +55,7 @@ public class CartScreenController {
 
         btnPlay.setVisible(false);
         btnRemove.setVisible(false);
+        btnPlaceOrder.setVisible(true);
 
         tblMedia.setItems(this.cart.getItemsOrdered());
 
@@ -68,21 +75,58 @@ public class CartScreenController {
                 showFilteredMedia(newValue);
             }
         });
+
+        tfTotalCost.setText(totalCost + "");
     }
 
-    @FXML
+    @FXML   // remove button
     void btnRemovePressed(ActionEvent event) {
         Media media = tblMedia.getSelectionModel().getSelectedItem();
         cart.removeMedia(media);
+        totalCost = cart.totalCost();
+        tfTotalCost.setText(totalCost + ""); // reset the total cost
     }
 
-    @FXML 
+    @FXML   // play button
     void btnPlayPressed(ActionEvent event) {
         Media media = tblMedia.getSelectionModel().getSelectedItem();
         if (media instanceof Playable) {
             Playable disc = (Playable) media;
             new PlayMedia(disc);
         }
+    }
+
+    @FXML   // place order pressed
+    void btnPlaceOrderPressed(ActionEvent event) {
+        this.cart = new Cart();
+        tblMedia.setItems(this.cart.getItemsOrdered());
+        totalCost = cart.totalCost();
+        tfTotalCost.setText(totalCost + ""); // reset the total cost
+    }
+
+    @FXML 
+    void menuItemAddBookPressed (ActionEvent event) {
+        new AddBookToStoreScreen(store);
+    }
+
+    @FXML
+    void menuItemAddCDPressed (ActionEvent event) {
+        new AddCompactDiscToStoreScreen(store);
+    }
+
+    @FXML
+    void menuItemAddDVDPressed (ActionEvent event) {
+        new AddDigitalVideoDiscToStoreScreen(store);
+    }
+    
+    @FXML
+    void menuItemViewStorePressed (ActionEvent event) {
+        new StoreScreen(this.store, this.cart);
+    }
+
+    @FXML
+    void menuItemViewCartPressed (ActionEvent event) {
+        
     }
 
     void updateButtonBar(Media media) {
@@ -108,6 +152,5 @@ public class CartScreenController {
         if (cart.getItemsOrdered() != null) {
             tblMedia.setItems(list);
         }
-
     }
 }
