@@ -10,6 +10,8 @@ import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.*;
 
@@ -54,7 +56,7 @@ public class AddCompactDiscToStoreScreen extends AddItemToStore {
         @FXML private TextField authorCD;
         @FXML private TextField categoryCD;
         @FXML private TextField costCD;
-        @FXML private TextField lengthCD;
+        @FXML private TextField tracksCD;
         @FXML private Button btnAddCD;
 
 
@@ -70,7 +72,7 @@ public class AddCompactDiscToStoreScreen extends AddItemToStore {
             authorCD.setVisible(true);
             categoryCD.setVisible(true);
             costCD.setVisible(true);
-            lengthCD.setVisible(true);
+            tracksCD.setVisible(true);
 
         }
 
@@ -79,9 +81,33 @@ public class AddCompactDiscToStoreScreen extends AddItemToStore {
             String title = titleCD.getText();
             String author = authorCD.getText();
             String category = categoryCD.getText();
-            Float cost = Float.parseFloat(costCD.getText());
-            Integer length = Integer.parseInt(lengthCD.getText());
-            store.addMedia(new CompactDisc(1, title, category, length , author, cost));
+
+            try {
+
+                ArrayList<Track> TrackListCD = new ArrayList<Track>();
+
+                Float cost = Float.parseFloat(costCD.getText());
+                String[] tracks = tracksCD.getText().split(", ");
+                Integer length = 0;
+                for (int i = 0; i <= tracks.length - 1; i += 2) {
+                    String track_title = tracks[i];
+                    Integer track_length = Integer.parseInt(tracks[i+1].replace(" ", ""));
+                    
+                    length += track_length;
+                    TrackListCD.add(new Track(track_title, track_length));
+                }
+
+                Integer curr_id = store.getItemsInStore().size() + 1;
+                CompactDisc cd = new CompactDisc(curr_id, title, category, length , author, cost);
+                for (Track t: TrackListCD) {
+                    cd.addTrack(t);
+                }
+                store.addMedia(cd);
+
+                setVisible(false);
+            } catch (IllegalArgumentException iae) {
+                throw new IllegalArgumentException("ERROR: Wrong format of input");
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 package hust.soict.dsai.aims.screen.event_handle;
+import javax.naming.LimitExceededException;
 import javax.swing.*;
 import java.awt.*;
 import hust.soict.dsai.aims.media.*;
@@ -10,20 +11,23 @@ public class AddToCart extends JDialog {
     private Media media;
     private Cart cart;
 
-    public AddToCart (Media media, Cart cart) {
+    public AddToCart (Media media, Cart cart) throws LimitExceededException {
         super();
+        try {
+            this.media = media;
+            this.cart = cart;
+            this.cart.addMedia(this.media);
 
-        this.media = media;
-        this.cart = cart;
-        this.cart.addMedia(this.media);
+            Container cp = getContentPane();
+            cp.setLayout(new FlowLayout(FlowLayout.CENTER));
+            cp.add(new JLabel("Add to cart successfully"));
 
-        Container cp = getContentPane();
-        cp.setLayout(new FlowLayout(FlowLayout.CENTER));
-        cp.add(new JLabel("Add to cart successfully"));
-
-        setTitle("Added to cart");
-        setSize(300, 100);
-        setVisible(true);
+            setTitle("Added to cart");
+            setSize(300, 100);
+            setVisible(true);
+        } catch (LimitExceededException e) {
+            throw e;
+        }
     }
 
     public Cart getUpdatedCart() {

@@ -48,7 +48,7 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Title: ">
+                  <Label text="CD's Title">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
@@ -88,7 +88,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Length: ">
+                  <Label text="Tracks [title1, length1, title2, track2,...]">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -96,7 +96,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="lengthCD" prefHeight="31.0" prefWidth="199.0">
+                  <TextField fx:id="tracksCD" prefHeight="31.0" prefWidth="199.0">
                      <font>
                         <Font size="15.0" />
                      </font>

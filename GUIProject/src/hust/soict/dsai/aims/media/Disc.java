@@ -1,6 +1,9 @@
 package hust.soict.dsai.aims.media;
 
+import hust.soict.dsai.aims.exception.PlayerException;
+
 public class Disc extends Media implements Playable {
+    private int id;
     protected int length;
     protected String author;
     public int getLength() {
@@ -10,7 +13,7 @@ public class Disc extends Media implements Playable {
         return author;
     }
 
-    public String play(){
+    public String play() throws PlayerException{
         return "";
     }
 

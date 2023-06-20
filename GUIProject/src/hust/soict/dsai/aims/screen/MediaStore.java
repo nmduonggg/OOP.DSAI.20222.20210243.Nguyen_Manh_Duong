@@ -1,9 +1,11 @@
 package hust.soict.dsai.aims.screen;
+import javax.naming.LimitExceededException;
 import javax.swing.*;
 import java.awt.event.*;
 import hust.soict.dsai.aims.media.*;
 import hust.soict.dsai.aims.screen.event_handle.*;
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 
 import java.awt.*;
 
@@ -52,14 +54,18 @@ public class MediaStore extends JPanel {
 
     // Button Mouse Listener
 
-    private class PlayButtonListener implements MouseListener {
+    private class PlayButtonListener implements MouseListener{
         public void mousePressed(MouseEvent e) {}
         public void mouseReleased(MouseEvent e) {}
         public void mouseEntered(MouseEvent e) {}
         public void mouseExited(MouseEvent e) {}
 
         public void mouseClicked(MouseEvent e) {
-            new PlayMedia(disc);
+            try {
+                new PlayMedia(disc);
+            } catch (PlayerException pe) {
+                pe.printStackTrace();
+            }
         }
     }
 
@@ -71,8 +77,12 @@ public class MediaStore extends JPanel {
         public void mouseExited(MouseEvent e) {}
 
         public void mouseClicked(MouseEvent e) {
-            AddToCart adc = new AddToCart(media, cart);
-            cart = adc.getUpdatedCart();
+            try {
+                AddToCart adc = new AddToCart(media, cart);
+                cart = adc.getUpdatedCart();
+            } catch (LimitExceededException lee) {
+                lee.printStackTrace();
+            }
         }
     }
 }

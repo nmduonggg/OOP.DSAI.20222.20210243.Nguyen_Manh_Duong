@@ -71,10 +71,13 @@ public class StoreScreen extends JFrame {
         center.setLayout(new GridLayout(3,3,2,2));
         ArrayList<Media> mediaInStore = store.getItemsInStore();
         for (int i = 0; i < 9; i++){
-
-            MediaStore cell = new MediaStore(mediaInStore.get(i), cart);
-            center.add(cell);
-                
+            try {
+                MediaStore cell = new MediaStore(mediaInStore.get(i), cart);
+                center.add(cell);
+            } catch (IndexOutOfBoundsException e) {
+                BlankCell cell = new BlankCell();
+                center.add(cell);
+            }
         }
 
         return center;
@@ -111,9 +114,6 @@ public class StoreScreen extends JFrame {
     public static void main (String[] args){
         Cart cart = new Cart();
         Store store = new Store();
-        for (int i = 1; i<=9; i++) {
-            store.addMedia(new DigitalVideoDisc(i, "DVD"+i, "A", 10, "nmd", (float)10.0));
-        }
         new StoreScreen(store, cart);
     }
 }

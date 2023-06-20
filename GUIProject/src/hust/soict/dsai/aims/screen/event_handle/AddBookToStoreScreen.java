@@ -78,14 +78,22 @@ public class AddBookToStoreScreen extends AddItemToStore {
             String title = titleBook.getText();
             String[] authors = authorsBook.getText().split(",");
             String category = categoryBook.getText();
-            Float cost = Float.parseFloat(costBook.getText());
-            Book book = new Book(1, title, category, cost);
+            try {
+                Float cost = Float.parseFloat(costBook.getText());
+                Integer curr_id = store.getItemsInStore().size() + 1;
+                Book book = new Book(curr_id, title, category, cost);
+                for (String author: authors) {
+                                book.addAuthor(author);
+                            }
 
-            for (String author: authors) {
-                book.addAuthor(author);
-            }
+                            store.addMedia(book);
+            setVisible(false);
 
-            store.addMedia(book);
+            } catch (IllegalArgumentException iae){
+                throw new IllegalArgumentException("Only positive cost");
+            } 
+            
+            
         }
     }
 }

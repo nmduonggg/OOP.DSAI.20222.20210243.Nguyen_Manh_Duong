@@ -79,9 +79,16 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStore {
             String title = titleDVD.getText();
             String author = authorDVD.getText();
             String category = categoryDVD.getText();
-            Float cost = Float.parseFloat(costDVD.getText());
-            Integer length = Integer.parseInt(lengthDVD.getText());
-            store.addMedia(new DigitalVideoDisc(1, title, category, length , author, cost));
+            try {
+                Float cost = Float.parseFloat(costDVD.getText());
+                Integer length = Integer.parseInt(lengthDVD.getText());
+                Integer curr_id = store.getItemsInStore().size() + 1;
+                store.addMedia(new DigitalVideoDisc(curr_id, title, category, length , author, cost));
+
+                setVisible(false);
+            } catch (IllegalArgumentException iae) {
+                throw new IllegalArgumentException("ERROR: Wrong format of input");
+            }
         }
     }
 }

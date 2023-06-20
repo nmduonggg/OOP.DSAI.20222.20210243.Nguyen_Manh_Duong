@@ -8,7 +8,6 @@ import javafx.embed.swing.JFXPanel;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
 import javax.swing.JFrame;
 
 import javafx.fxml.FXMLLoader;
@@ -16,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 public class CartScreen extends JFrame {
     private Cart cart;
     private Store store;
+
 
     public CartScreen(Cart cart, Store store) {
         super();
@@ -48,8 +48,11 @@ public class CartScreen extends JFrame {
     //     Cart cart = new Cart();
     //     Store store = new Store();
     //     for (int i = 1; i<=9; i++) {
-    //         cart.addMedia(new DigitalVideoDisc(i, "DVD"+i, "A", 10, "nmd", (float)10.0));
-    //         store.addMedia(new DigitalVideoDisc(i, "DVD"+i, "B", 10, "nm", (float)10.0));
+    //         try {
+    //             cart.addMedia(new DigitalVideoDisc(i, "DVD"+i, "A", 10, "nmd", (float)10.0));
+    //         } catch (LimitExceededException e) {
+    //             throw e;
+    //         }
     //     }
         
 

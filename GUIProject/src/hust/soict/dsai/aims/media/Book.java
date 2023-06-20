@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Book extends Media {
     private List<String> authors = new ArrayList<String>();
+    private int id;
 
     public Book(int id, String title) {
         super(id, title);

@@ -51,7 +51,6 @@ public abstract class Media {
 
     public Media(int id, String title) {
         this.title = title;
-        this.id = id;
     }
 
     public Media(int id, String title, String category, float cost) {

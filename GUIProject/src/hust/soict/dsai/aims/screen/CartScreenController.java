@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.Action;
 
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.media.Playable;
 import hust.soict.dsai.aims.screen.event_handle.*;
@@ -88,7 +89,7 @@ public class CartScreenController {
     }
 
     @FXML   // play button
-    void btnPlayPressed(ActionEvent event) {
+    void btnPlayPressed(ActionEvent event) throws PlayerException {
         Media media = tblMedia.getSelectionModel().getSelectedItem();
         if (media instanceof Playable) {
             Playable disc = (Playable) media;

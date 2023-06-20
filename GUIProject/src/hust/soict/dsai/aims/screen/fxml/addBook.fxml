@@ -130,6 +130,6 @@
       </VBox>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#btnAddBookPressed" text="Add" BorderPane.alignment="CENTER" />
+      <Button fx:id="btnAddBook" mnemonicParsing="false" onAction="#btnAddBookPressed" text="Add" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
