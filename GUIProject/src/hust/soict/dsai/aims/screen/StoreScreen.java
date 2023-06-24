@@ -109,13 +109,6 @@ public class StoreScreen extends JFrame {
             setVisible(false);
         }
     }
-
-
-    public static void main (String[] args){
-        Cart cart = new Cart();
-        Store store = new Store();
-        new StoreScreen(store, cart);
-    }
 }
 
 
