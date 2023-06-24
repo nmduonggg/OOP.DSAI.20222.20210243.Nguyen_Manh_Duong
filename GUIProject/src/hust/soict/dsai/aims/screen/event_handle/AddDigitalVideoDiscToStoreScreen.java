@@ -10,6 +10,9 @@ import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
+
+import javax.swing.JOptionPane;
+
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.*;
 
@@ -81,13 +84,19 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStore {
             String category = categoryDVD.getText();
             try {
                 Float cost = Float.parseFloat(costDVD.getText());
+                if (cost <= 0.0){
+                    throw new IllegalArgumentException();
+                }
                 Integer length = Integer.parseInt(lengthDVD.getText());
+                if (length <= 0) {
+                    throw new IllegalArgumentException();
+                }
                 Integer curr_id = store.getItemsInStore().size() + 1;
                 store.addMedia(new DigitalVideoDisc(curr_id, title, category, length , author, cost));
 
                 setVisible(false);
             } catch (IllegalArgumentException iae) {
-                throw new IllegalArgumentException("ERROR: Wrong format of input");
+                JOptionPane.showMessageDialog(null, "Error: Wrong format of input");;
             }
         }
     }

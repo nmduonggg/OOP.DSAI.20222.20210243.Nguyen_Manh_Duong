@@ -96,7 +96,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="lengthDVD" prefHeight="31.0" prefWidth="199.0">
+                  <TextField fx:id="lengthDVD" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="199.0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -116,7 +116,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="authorDVD">
+                  <TextField fx:id="authorDVD" alignment="CENTER_RIGHT">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -136,7 +136,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="costDVD">
+                  <TextField fx:id="costDVD" alignment="CENTER_RIGHT">
                      <font>
                         <Font size="15.0" />
                      </font>

@@ -9,6 +9,9 @@ import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
+
+import javax.swing.JOptionPane;
+
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.*;
 
@@ -80,17 +83,22 @@ public class AddBookToStoreScreen extends AddItemToStore {
             String category = categoryBook.getText();
             try {
                 Float cost = Float.parseFloat(costBook.getText());
-                Integer curr_id = store.getItemsInStore().size() + 1;
-                Book book = new Book(curr_id, title, category, cost);
-                for (String author: authors) {
-                                book.addAuthor(author);
-                            }
+                if (cost >= 0.0) {
+                    Integer curr_id = store.getItemsInStore().size() + 1;
+                    Book book = new Book(curr_id, title, category, cost);
+                    for (String author: authors) {
+                                    book.addAuthor(author);
+                                }
 
-                            store.addMedia(book);
-            setVisible(false);
-
+                                store.addMedia(book);
+                    setVisible(false);
+                } else {
+                    throw new IllegalArgumentException();
+                }
             } catch (IllegalArgumentException iae){
-                throw new IllegalArgumentException("Only positive cost");
+                JOptionPane.showMessageDialog(null,"Only positive float cost accepted");
+
+                // throw new IllegalArgumentException("Only positive cost");
             } 
             
             

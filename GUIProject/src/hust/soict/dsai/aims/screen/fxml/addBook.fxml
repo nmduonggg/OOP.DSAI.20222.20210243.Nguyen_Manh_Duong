@@ -96,7 +96,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="authorsBook">
+                  <TextField fx:id="authorsBook" alignment="CENTER_RIGHT">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -116,7 +116,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="costBook">
+                  <TextField fx:id="costBook" alignment="CENTER_RIGHT">
                      <font>
                         <Font size="15.0" />
                      </font>

@@ -16,7 +16,7 @@ public class Cart {
 			itemsOrdered.add(m);
 			return true;
 		} else {
-			throw new LimitExceededException("ERROR: The number of media has reached its limit");
+			throw new LimitExceededException();
 		}
 	}
 

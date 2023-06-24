@@ -96,7 +96,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="tracksCD" prefHeight="31.0" prefWidth="199.0">
+                  <TextField fx:id="tracksCD" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="199.0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -116,7 +116,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="authorCD">
+                  <TextField fx:id="authorCD" alignment="CENTER_RIGHT">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -136,7 +136,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="costCD">
+                  <TextField fx:id="costCD" alignment="CENTER_RIGHT">
                      <font>
                         <Font size="15.0" />
                      </font>

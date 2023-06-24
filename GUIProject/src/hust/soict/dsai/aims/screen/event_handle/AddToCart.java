@@ -25,8 +25,15 @@ public class AddToCart extends JDialog {
             setTitle("Added to cart");
             setSize(300, 100);
             setVisible(true);
+
         } catch (LimitExceededException e) {
-            throw e;
+                Container cp = getContentPane();
+                cp.setLayout(new FlowLayout(FlowLayout.CENTER));
+                cp.add(new JLabel("You reach the maximum load of cart"));
+
+                setTitle("ERROR");
+                setSize(300, 100);
+                setVisible(true);
         }
     }
 

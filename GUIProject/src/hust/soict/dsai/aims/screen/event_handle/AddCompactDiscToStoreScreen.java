@@ -12,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.*;
 
@@ -92,6 +94,9 @@ public class AddCompactDiscToStoreScreen extends AddItemToStore {
                 for (int i = 0; i <= tracks.length - 1; i += 2) {
                     String track_title = tracks[i];
                     Integer track_length = Integer.parseInt(tracks[i+1].replace(" ", ""));
+                    if (track_length <= 0){
+                        throw new IllegalArgumentException(); // exception handle
+                    }
                     
                     length += track_length;
                     TrackListCD.add(new Track(track_title, track_length));
@@ -105,8 +110,9 @@ public class AddCompactDiscToStoreScreen extends AddItemToStore {
                 store.addMedia(cd);
 
                 setVisible(false);
+
             } catch (IllegalArgumentException iae) {
-                throw new IllegalArgumentException("ERROR: Wrong format of input");
+                JOptionPane.showMessageDialog(null, "Error: Wrong format of input");
             }
         }
     }
